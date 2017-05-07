@@ -25,12 +25,16 @@ class TakeInput extends Component {
   takeInput(e) {
     this.setState({inputValue: e.target.value})
   }
+  reset(e) {
+    this.setState({inputValue: ''}) 
+  }
   render(props) {
     return (
       <div>
         <label>Type stuff here!</label>
         <input name="stuff" value={this.state.inputValue} type="text" onChange={(e) => this.takeInput(e)}/>
-        <p>You typed {this.state.inputValue}!</p>
+        <p>You typed {this.state.inputValue.length > 0 ? this.state.inputValue : 'nothing'}!</p>
+        <button onClick={(e) => this.reset(e)}>Clear</button>
       </div>
     )
   }
