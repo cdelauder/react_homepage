@@ -15,6 +15,27 @@ class Header extends Component {
   }
 }
 
+class TakeInput extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ''
+    };
+  }
+  takeInput(e) {
+    this.setState({inputValue: e.target.value})
+  }
+  render(props) {
+    return (
+      <div>
+        <label>Type stuff here!</label>
+        <input name="stuff" value={this.state.inputValue} type="text" onChange={(e) => this.takeInput(e)}/>
+        <p>You typed {this.state.inputValue}!</p>
+      </div>
+    )
+  }
+}
+
 class Time extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +45,10 @@ class Time extends Component {
     this.setState({date: new Date()});
   }
   componentDidMount() {
-    setInterval(() => this.tick(), 1000);
+    this.timerID = setInterval(() => this.tick(), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timerID);
   }
   render() {
     return (
@@ -43,6 +67,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Time />
+        <TakeInput />
       </div>
     );
   }
