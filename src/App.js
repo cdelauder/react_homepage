@@ -24,7 +24,6 @@ class Header extends Component {
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
   }
   render(props) {
     return (
@@ -53,54 +52,54 @@ class About extends Component {
   }
 }
 
-class TakeInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputValue: ''
-    };
-  }
-  takeInput(e) {
-    this.setState({inputValue: e.target.value})
-  }
-  reset(e) {
-    this.setState({inputValue: ''}) 
-  }
-  render(props) {
-    return (
-      <div>
-        <label>Type stuff here!</label>
-        <input name="stuff" value={this.state.inputValue} type="text" onChange={(e) => this.takeInput(e)}/>
-        <p>You typed {this.state.inputValue.length > 0 ? this.state.inputValue : 'nothing'}!</p>
-        <button onClick={(e) => this.reset(e)}>Clear</button>
-      </div>
-    )
-  }
-}
-
-class Time extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {date: new Date()};
-  }
-  tick() {
-    this.setState({date: new Date()});
-  }
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1000);
-  }
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
+class Experience extends Component {
   render() {
     return (
-      <div>
-        <p className="App-intro">
-          The current time is {this.state.date.toLocaleString()}
-        </p>
+      <div className="content experience">
+        <div className="company-header">
+          <h3>Shotput</h3>
+          <h5 className="inline">Director of Engineering</h5>
+          <h5 className="inline">San Francisco, CA</h5>
+          <h5 className="inline">Dec. 2015 - Present</h5>
+        </div>
+        <div className="company-bullets">
+          <ul>
+            <li>Built and led the team of Shotput engineers.</li>
+            <li>Scaled Shotput from tens of shipments per week to tens of thousands of shipments per week.</li>
+            <li>Created policies and workflow to ensure a well-tested reliable app, resulting in test coverage improving from 0% to 74%.</li>
+            <li>Built and maintained the DevOps infrastructure on AWS, set up monitoring software, and developed the front end build
+              system.</li>
+            <li>Architected, designed, and implemented the Shotput Payment Account server to handle deposit account transactions.
+              Features include separate audit-logging of every incoming request, 90% test coverage, and only one error in production
+              during its lifetime.</li>
+            <li>Implemented multi-facility logistics, which involved rewriting the majority of both the front end and back end of the
+              codebase, as nearly every model and action was affected.</li>
+            <li>Created “God Mode”, allowing Shotput admins to securely view the site as seen by our clients, and perform privileged
+              actions on the behalf of those clients.</li>
+            <li>Improved batch order creation performance by 75% via the implementation of multithreading</li>
+            <li>Implemented and maintained a number of third-party API integrations including Easypost, Shopify, Shipstation, and SkuVault.</li>
+          </ul>
+        </div>
+        <div className="company-header">
+          <h3>Stanza</h3>
+          <h5 className="inline">Software Engineer</h5>
+          <h5 className="inline">San Francisco, CA</h5>
+          <h5 className="inline">Oct 2014 - Dec. 2015</h5>
+        </div>
+        <div className="company-bullets">
+          <ul>
+            <li>Decreased average latency on our most heavily trafficked endpoint by 5000% by implementing redis caching.</li>
+            <li>Refactored every server endpoint to increase efficiency and introduce proper error-handling. Eliminated every point of
+              silent failure.</li>
+            <li>Rewrote the front and back ends of our OAuth process to finally provide a unified auth process across our various apps.</li>
+            <li>Implemented a new build system to provide our front end engineers with a rapid-development environment.</li>
+            <li>Purged 50% of the code base by removing old, unused code and deprecating 50% of our models to reduce developer
+              confusion and increase the speed of the app. </li>
+          </ul>
+        </div>
       </div>
-    )
-  } 
+    );
+  }
 }
 
 class App extends Component {
@@ -135,6 +134,9 @@ class App extends Component {
         <NavBar selected={selected} navigate={navigate}/>
         {selected === about &&
           <About />
+        }
+        {selected === experience &&
+          <Experience />
         }
       </div>
     );
