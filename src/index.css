@@ -1,5 +1,110 @@
 body {
-  margin: 0;
-  padding: 0;
   font-family: sans-serif;
+  max-width: 1000px;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.nav {
+  width: 120px;
+  float: left;
+}
+
+.nav-item{
+  cursor: pointer;
+  padding: 0 15px;
+  color: #2C657F;
+}
+
+.nav .selected {
+  color: #57C9FF;
+}
+
+.header {
+  min-width: 100%;
+  text-align: center;
+}
+
+.header .name {
+  padding-top: 15px;
+  margin-bottom: 10px;
+}
+
+.header .title {
+  margin-top: 0px;
+}
+
+.beach-picture {
+  width: 100px;
+  border-radius: 50%;
+  float: left;
+}
+
+.hidden {
+  display: none;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.content {
+  float: right;
+  width: calc(100% - 150px);
+  text-align: center;
+  padding: 15px;
+}
+
+.summary {
+  padding: 5px 50px;
+}
+
+.email-link {
+  text-decoration: none;
+  color: #57C9FF;
+}
+
+.experience {
+  text-align: left;
+}
+
+.company-header h3 {
+  margin: .5em .75em;
+}
+
+.company-header h5 {
+  margin: .5em 1em;
+}
+
+.company-bullets ul li {
+  margin: .25em 0;
+}
+
+@media (max-width: 700px) {
+  .nav {
+    width: 600px;
+    margin: 0 calc((100% - 600px) / 2);
+  }
+
+  .nav-item {
+    display: inline-block;
+  }
+
+  .content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav {
+    width: 400px;
+    margin: 0 calc((100% - 400px) / 2);
+  }
+
+  .nav-item {
+    display: inline-block;
+  }
+
+  .hidden-xs {
+    display: none;
+  }
 }

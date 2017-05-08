@@ -1,15 +1,58 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-const statement = 'Fuck this shit';
+const about = 'About'
+const experience = 'Experience'
+const resume = 'Resume'
+const github = 'Github'
+const linkedin = 'Linkedin'
+const email = 'Email'
+
 
 class Header extends Component {
   render(props) {
     return (
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>{statement}</h2>
+      <div className="header">
+        <img src="images/me_beach.jpg" alt="Chris on the beach" className="beach-picture"/>
+        <h1 className="name">Chris DeLauder</h1>
+        <h3 className="title">Software Engineer</h3>
+      </div>
+    )
+  }
+}
+
+class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: about
+    };
+  }
+
+  navigate(link) {
+    console.log(link)
+    if (link === resume) {
+      window.open('chris_delauder_resume_2017.pdf');
+    } else if (link === github) {
+      window.open('https://github.com/cdelauder');
+    } else if (link === linkedin) {
+      window.open('https://linkedin.com/in/chrisdelauder/');
+    } else if (link === email) {
+      window.open('mailto:cdelauder@gmail.com');
+    } else {
+      this.setState({selected: link})
+    }
+  };
+
+  render(props) {
+    return (
+      <div className="nav">
+        <h5 className={"nav-item" + (this.state.selected ==  about ? ' selected' : '')} onClick={(link) => this.navigate(about)}>{about}</h5>
+        <h5 className={"nav-item" + (this.state.selected ==  experience ? ' selected' : '')} onClick={(link) => this.navigate(experience)}>{experience}</h5>
+        <h5 className="nav-item" onClick={(link) => this.navigate(resume)}>{resume}</h5>
+        <h5 className="nav-item" onClick={(link) => this.navigate(github)}><span className="fa fa-github"></span> <span className="hidden-xs">Github</span></h5>
+        <h5 className="nav-item" onClick={(link) => this.navigate(linkedin)}><span className="fa fa-linkedin"></span> <span className="hidden-xs">Linkedin</span></h5>
+        <h5 className="nav-item" onClick={(link) => this.navigate(email)}><span className="fa fa-envelope"></span> <span className="hidden-xs">Email</span></h5>
       </div>
     )
   }
@@ -70,11 +113,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <NavBar />
         <Time />
         <TakeInput />
       </div>
     );
   }
-}   
+}
  
 export default App;
